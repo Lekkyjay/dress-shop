@@ -6,9 +6,11 @@ import Products from './pages/Products';
 function App() {
   return (
     <div>
-      {/*<Navbar />*/}
-      <Route exact path="/" component={Home} />
-      <Route path="/products" component={Products} />
+      <Navbar />
+      <div className="container">
+        <Route exact path="/" component={Home} />
+        <Route path="/products" component={Products} />
+      </div>
     </div>
   );
 }

@@ -8,8 +8,9 @@ const Products = () => {
 
   const [item, setItem] = useState({
     products: data.products,
-    cartItems: localStorage.getItem("cartItems") ? 
-      JSON.parse(localStorage.getItem("cartItems")) : [],
+    cartItems: localStorage.getItem("cartItems") 
+      ? JSON.parse(localStorage.getItem("cartItems")) 
+      : [],
     size: "",
     sort: ""
   })
@@ -38,7 +39,8 @@ const Products = () => {
       }
     });
     if (!alreadyInCart) {
-      cartItems.push({ ...product, count: 1 });
+      //cartItem structure is created here. count property added to product object.
+      cartItems.push({ ...product, count: 1 }); 
     }
     setItem({ ...item, cartItems });
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
@@ -46,21 +48,27 @@ const Products = () => {
 
   const sortProducts = (event) => {
     const sort = event.target.value;
-    console.log('sort', event.target.value);
     setItem({...item,
       sort: sort,
       products: item.products.slice().sort((a, b) =>
-          sort === "lowest" ? 
-            a.price > b.price ? 1 : -1
-          : sort === "highest" ? 
-            a.price < b.price ? 1 : -1
-          : a._id < b._id ? 1 : -1
-        ),
+          sort === "lowest" 
+            ? a.price > b.price 
+              ? 1 
+              : -1
+            : 
+          sort === "highest" 
+            ? a.price < b.price 
+              ? 1 
+              : -1
+            : 
+          a._id < b._id 
+            ? 1 
+            : -1
+      ),
     });
   }
 
   const filterProducts = (event) => {
-    console.log(event.target.value);
     if (event.target.value === "") {
       setItem({...item, size: event.target.value, products: data.products });
     } else {

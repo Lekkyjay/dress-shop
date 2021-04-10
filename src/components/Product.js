@@ -1,9 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { FaCartPlus, FaSearch } from 'react-icons/fa'
 import formatCurrency from '../util'
 
-const Product = ({ products }) => {
+const Product = ({ products, addToCart }) => {
   return (
     <div>
       <ul className="products">
@@ -16,13 +15,9 @@ const Product = ({ products }) => {
             <p className="title">{product.title}</p>
             <p className="price">{formatCurrency(product.price)}</p>
           </div>
-          <div className="product-icons">
-          <Link to="">
-            <FaSearch className="product-icon" />
-          </Link>
-          <Link to="">
-            <FaCartPlus className="product-icon" />
-          </Link>          
+          <div className="product-icons">          
+            <FaSearch className="product-icon" />          
+            <FaCartPlus className="product-icon" onClick={() => addToCart(product)} />
           </div>
         </li>
       ))}
