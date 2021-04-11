@@ -44,58 +44,14 @@ const Products = () => {
     }
     setItem({ ...item, cartItems });
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
-  }
-
-  const sortProducts = (event) => {
-    const sort = event.target.value;
-    setItem({...item,
-      sort: sort,
-      products: item.products.slice().sort((a, b) =>
-          sort === "lowest" 
-            ? a.price > b.price 
-              ? 1 
-              : -1
-            : 
-          sort === "highest" 
-            ? a.price < b.price 
-              ? 1 
-              : -1
-            : 
-          a._id < b._id 
-            ? 1 
-            : -1
-      ),
-    });
-  }
-
-  const filterProducts = (event) => {
-    if (event.target.value === "") {
-      setItem({...item, size: event.target.value, products: data.products });
-    } else {
-      setItem({...item,
-        size: event.target.value,
-        products: data.products.filter(
-          (product) => product.availableSizes.indexOf(event.target.value) >= 0
-        ),
-      });
-    }
-  }
+  }  
 
   return (
     <main>
       <div className="content">
         <div className="main">
-          <Filter
-            count={item.products.length}
-            size={item.size}
-            sort={item.sort}
-            filterProducts={filterProducts}
-            sortProducts={sortProducts}
-          ></Filter>
-          <Product
-            products={item.products}
-            addToCart={addToCart}
-          ></Product>
+          <Filter />
+          <Product addToCart={addToCart} />
         </div>
         <div className="sidebar">
           <Cart

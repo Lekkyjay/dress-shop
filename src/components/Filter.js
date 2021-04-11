@@ -1,7 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { filterProducts, sortProducts } from '../redux/actions/productActions'
 
-const Filter = ({count, size, sort, filterProducts, sortProducts }) => {
+const Filter = () => {
 
   const products = useSelector(state => state.products.items)
   const filteredProducts = useSelector(state => state.products.filteredItems)
@@ -12,21 +13,18 @@ const Filter = ({count, size, sort, filterProducts, sortProducts }) => {
       ? (<div>Loading...</div>) 
       : (
       <div className="filter">
-        <div className="filter-result">{count} Products</div>
+        <div className="filter-result">{filteredProducts.length} Products</div>
         <div className="filter-sort">
           Order{" "}
-          <select value={sort} onChange={sortProducts}>
-            <option>Latest</option>
+          <select onChange={(e) => dispatch(sortProducts(filteredProducts, e.target.value))}>
+            <option value="">Latest</option>
             <option value="lowest">Lowest</option>
             <option value="highest">Highest</option>
           </select>
         </div>
         <div className="filter-size">
           Filter{" "}
-          <select 
-            value={size} 
-            onChange={(e) => dispatch(filterProducts(products, e.target.value))}
-          >
+          <select onChange={(e) => dispatch(filterProducts(products, e.target.value))}>
             <option value="">ALL</option>
             <option value="XS">XS</option>
             <option value="S">S</option>
