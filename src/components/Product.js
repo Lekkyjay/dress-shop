@@ -6,8 +6,9 @@ import Zoom from 'react-reveal/Zoom'
 import formatCurrency from '../util'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProducts } from '../redux/actions/productActions'
+import { addToCart } from '../redux/actions/cartActions'
 
-const Product = ({ addToCart }) => {
+const Product = () => {
 
   const [product, setProduct] = useState(null)  //for toggling the Modal
 
@@ -25,9 +26,7 @@ const Product = ({ addToCart }) => {
   const closeModal = () => {
     setProduct(null);
   }
-
-  console.log('products:', products)
-
+  
   return (
     <div>
       <Fade bottom cascade>
@@ -45,7 +44,7 @@ const Product = ({ addToCart }) => {
             </div>
             <div className="product-icons">          
               <FaSearch className="product-icon" onClick={() => openModal(product)} />          
-              <FaCartPlus className="product-icon" onClick={() => addToCart(product)} />
+              <FaCartPlus className="product-icon" onClick={() => dispatch(addToCart(product))} />
             </div>
           </li>
         ))}
@@ -75,7 +74,7 @@ const Product = ({ addToCart }) => {
                   <button
                     className="button primary"
                     onClick={() => {
-                      addToCart(product)
+                      dispatch(addToCart(product))
                       closeModal()
                     }}
                   >
