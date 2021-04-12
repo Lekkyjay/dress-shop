@@ -357,3 +357,11 @@ input {
 .success-message {
   color: green;
 }
+
+/* footer */
+footer {
+  text-align: center;
+  padding: 40px;
+  background: var(--light1);
+  margin-top: 20px;
+}
