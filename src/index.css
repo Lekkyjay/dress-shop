@@ -55,6 +55,10 @@ nav ul li a {
   color: var(--black);
 }
 
+nav ul li a:hover {
+  color: var(--primary);
+}
+
 /* Hero */
 .hero {
   height: calc(100vh - 60px);
@@ -352,4 +356,12 @@ input {
 }
 .success-message {
   color: green;
+}
+
+/* footer */
+footer {
+  text-align: center;
+  padding: 40px;
+  background: var(--light1);
+  margin-top: 20px;
 }

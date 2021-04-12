@@ -17,9 +17,12 @@ const Products = () => {
           <Product />
         </div>
         <div className="sidebar">
-          <Cart createOrder={createOrder} />
+          <Cart />
         </div>
       </div>
+      <footer>
+        <p>Dress Shop. &#169; {new Date().getFullYear()} </p>
+      </footer>
     </main>
   )
 }
