@@ -4,13 +4,9 @@ import Filter from '../components/Filter'
 import Product from '../components/Product'
 
 const Products = () => {  
-
-  const createOrder = (order) => {
-    alert("Need to save order for " + order.name);
-  } 
   
   return (
-    <main>
+    <main className="products-main">
       <div className="content">
         <div className="main">
           <Filter />
